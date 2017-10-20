@@ -17,17 +17,19 @@
       <h4>You may search by issue, name, or both</h4>
 
       <form id="medical-lookup" class="form-control">
-        <label for="medical">Search by medical issue</label>
-        <input id="medical" type="text" name="medical">
+        <label for="issue">Search by medical issue</label>
+        <input id="issue" type="text" name="issue" value="issue">
         <br>
         <label for="name">Search by name</label>
-        <input id="name" type="text" name="name">
+        <input id="name" type="text" name="name" value="name">
         <br>
         <button class="btn btn-info" id="doctor-button">Find a doctor</button>
       </form>
 
       <div class="errors"></div>
-      <div class="showDoctors"></div>
+      <ul class="showDoctors">
+
+      </ul>
     </div>
   </body>
 </html>
