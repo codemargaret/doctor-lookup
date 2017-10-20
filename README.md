@@ -27,10 +27,14 @@ _Clone the repository, then run the following commands in Terminal:_
 
 ## Specifications
 
+| Spec                                                | Input       | Output           |
+|-----------------------------------------------------|-------------|------------------|
+| Returns doctors that treat a specific medical issue | muscle pain | Preciado, Xavier |
+| Returns doctors by name                             | Preciado    | Preciado, Xavier |
 
 ## Known Bugs
 
-_There are no known bugs at this time._
+_Search stops if a doctor has no specialities listed._
 
 ## Support and contact details
 
