@@ -34,7 +34,9 @@ _Clone the repository, then run the following commands in Terminal:_
 
 ## Known Bugs
 
-_Search stops if a doctor has no specialities listed._
+_Search stops if a doctor has no specialities listed.  To see some site functionality, you can input 'muscles' for 'What hurts?' or search for Xavier Preciado, first or last name or both._
+
+_No message is shown if the search returns no results._
 
 ## Support and contact details
 
