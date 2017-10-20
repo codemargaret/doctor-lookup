@@ -22,15 +22,23 @@ export class Doctor {
   callApi(promise, issueToFind, nameToFind){
     promise.then(function(response){
       let body = JSON.parse(response);
+      let allDoctors = body.data;
+      let doctorNum = allDoctors.length;
       let specialties;
-      for(let i = 0; i < 5; ++i){
-        specialties = body.data[i].specialties;
-        if (specialties.includes(issueToFind)){
-          alert("I found a thing!");
+      for(let i = 0; i < doctorNum; ++i){
+        specialties = allDoctors[i].specialties;
+        //returns one object within an array
+        let specObject = specialties.pop();
+        //removes the object from the array
+        let description = specObject.description;
+        if (description.match(issueToFind)){
+          $('.showDoctors').append(`<li>${allDoctors[i].profile.last_name}, ${allDoctors[i].profile.first_name}</li>`);
+        } else {
+          $('.showDoctors').text("No results found.");
         }
       }
     }, function(error){
-      $('.showErrors').text(`There was an error processing your request: ${error.message}`);
+      $('.errors').text(`There was an error processing your request: ${error.message}`);
     });
   }
 } //end Doctor class
