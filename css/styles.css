@@ -2,6 +2,11 @@ h1{
   padding: 75px;
 }
 
+h4 {
+  padding-bottom: 50px;
+}
+
 body {
   text-align: center;
+  background-color: lightblue;
 }
