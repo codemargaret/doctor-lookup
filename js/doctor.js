@@ -24,23 +24,23 @@ export class Doctor {
       let body = JSON.parse(response);
       let allDoctors = body.data;
       let doctorNum = allDoctors.length;
-      let specialties;
+      // let specialties;
       let profile;
-      let firstPractice;
+      // let firstPractice;
       // let doctorCount = 0;
       for(let i = 0; i < doctorNum; ++i){
-        specialties = allDoctors[i].specialties;
-        let specObject = specialties.pop();
-        let description = specObject.description;
+        // specialties = allDoctors[i].specialties;
+        // let specObject = specialties.pop();
+        // let description = specObject.description;
         profile = allDoctors[i].profile;
         let name = profile.slug;
         firstPractice = allDoctors[i].practices[0];
 
         if ((description.match(issueToFind)) || (name.match(nameToFind))){
-          $('.showDoctors').append(`<li>${allDoctors[i].profile.last_name}, ${allDoctors[i].profile.first_name}, ${allDoctors[i].practices[i].phones[i].number}</li>`);
+          $('.showDoctors').append(`<li>${allDoctors[i].profile.last_name}, ${allDoctors[i].profile.first_name}, ${allDoctors[i].practices[i].phones[i].number}, ${allDoctors[i]}.practices[i].website</li>`); //can you do phones this way?
           $('.showAddresses').append(`<li>${allDoctors[i].practices[i].visit_address.street}, ${allDoctors[i].practices[i].visit_address.city}, ${allDoctors[i].practices[i].visit_address.state}, ${allDoctors[i].practices[i].visit_address.zip}</li>`);
           $('.showNewStatus').append(`<li>${allDoctors[i].practices[i].accepts_new_patients}</li>`);
-          doctorCount += 1;
+          // doctorCount += 1;
         }
       }
       //attempt to show if a search did not return results, but since the loop is breaking, it's not reaching this point
