@@ -1,6 +1,5 @@
 export class Doctor {
   constructor(){
-
   }
 
   makePromise(api_key){
@@ -19,30 +18,15 @@ export class Doctor {
     });
   }
 
-  callApi(promise, issueToFind, nameToFind){
+  callApi(promise){
     promise.then(function(response){
       let body = JSON.parse(response);
-      let allDoctors = body.data;
-      let doctorNum = allDoctors.length;
-      // let specialties;
-      let profile;
-      // let firstPractice;
-      // let doctorCount = 0;
-      for(let i = 0; i < doctorNum; ++i){
-        // specialties = allDoctors[i].specialties;
-        // let specObject = specialties.pop();
-        // let description = specObject.description;
-        profile = allDoctors[i].profile;
-        let name = profile.slug;
-        firstPractice = allDoctors[i].practices[0];
-
-        if ((description.match(issueToFind)) || (name.match(nameToFind))){
-          $('.showDoctors').append(`<li>${allDoctors[i].profile.last_name}, ${allDoctors[i].profile.first_name}, ${allDoctors[i].practices[i].phones[i].number}, ${allDoctors[i]}.practices[i].website</li>`); //can you do phones this way?
-          $('.showAddresses').append(`<li>${allDoctors[i].practices[i].visit_address.street}, ${allDoctors[i].practices[i].visit_address.city}, ${allDoctors[i].practices[i].visit_address.state}, ${allDoctors[i].practices[i].visit_address.zip}</li>`);
-          $('.showNewStatus').append(`<li>${allDoctors[i].practices[i].accepts_new_patients}</li>`);
-          // doctorCount += 1;
-        }
-      }
+      body.data.forEach(function(doctor){
+        debugger;
+        $('.showDoctors').append(`<li>${doctor.profile.last_name}, ${doctor.profile.first_name}, ${doctor.practices.website}</li>`);
+        $('.showAddresses').append(`<li>${doctor.practices.visit_address.street}, ${doctor.practices.visit_address.city}, ${doctor.practices.visit_address.state}, ${doctor.practices.visit_address.zip}</li>`);
+        $('.showNewStatus').append(`<li>${doctor.practices.accepts_new_patients}</li>`);
+      });
       //attempt to show if a search did not return results, but since the loop is breaking, it's not reaching this point
       // if (doctorCount === 0) {
       //   $('.noResults').text("Your search returned no results");
