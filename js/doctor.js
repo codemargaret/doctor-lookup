@@ -21,13 +21,15 @@ export class Doctor {
   callApi(promise){
     promise.then(function(response){
       let body = JSON.parse(response);
+      let doctorCount = 0;
       body.data.forEach(function(doctor){
         $('#showDoctors').append(`<div class="card">Name: ${doctor.profile.last_name}, ${doctor.profile.first_name} <br> Number: ${doctor.practices[0].phones[0].number} <br> Website: <a href="${doctor.practices[0].website}">${doctor.practices[0].website}</a> Address: ${doctor.practices[0].visit_address.street}, ${doctor.practices[0].visit_address.city}, ${doctor.practices[0].visit_address.state} ${doctor.practices[0].visit_address.zip} <br> Accepts new patients: ${doctor.practices[0].accepts_new_patients}</div>`);
+        doctorCount += 1;
+        console.log(doctorCount);
       });
-      //attempt to show if a search did not return results, but since the loop is breaking, it's not reaching this point
-      // if (doctorCount === 0) {
-      //   $('.noResults').text("Your search returned no results");
-      // }
+      if (doctorCount === 0) {
+        $('.noResults').text("Your search returned no results");
+      }
     }, function(error){
       $('.errors').text(`There was an error processing your request: ${error.message}`);
     });
